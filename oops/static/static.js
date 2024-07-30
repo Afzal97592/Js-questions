@@ -18,8 +18,8 @@ class User {
   }
 }
 
-// const user1 = new User("John", 25, 40000);
-// const user2 = new User("APJ", 32, 500);
+const user1 = new User("John", 25, 40000);
+const user2 = new User("APJ", 32, 500);
 // const user3 = new User("Ahmad", 30, 20000);
 
 const users = [user1, user2, user3];
