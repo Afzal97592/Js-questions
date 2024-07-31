@@ -187,5 +187,12 @@ function printPattern6(n) {
     console.log(row);
   }
 }
-printPattern5(4);
-printPattern6(4);
+// printPattern5(4);
+// printPattern6(4);
+
+let sortedSquares = function (nums) {
+  let arr = nums.map((item) => item * item);
+  let resArr = arr.sort((a, b) => a - b);
+  return resArr;
+};
+console.log(sortedSquares([-4, -1, 0, 3, 10]));
