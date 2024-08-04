@@ -190,9 +190,144 @@ function printPattern6(n) {
 // printPattern5(4);
 // printPattern6(4);
 
-let sortedSquares = function (nums) {
-  let arr = nums.map((item) => item * item);
-  let resArr = arr.sort((a, b) => a - b);
-  return resArr;
-};
-console.log(sortedSquares([-4, -1, 0, 3, 10]));
+// let sortedSquares = function (nums) {
+//   let arr = nums.map((item) => item * item);
+//   let resArr = arr.sort((a, b) => a - b);
+//   return resArr;
+// };
+// console.log(sortedSquares([-4, -1, 0, 3, 10]));
+
+// Pattern 7
+
+//             *
+//          *  *
+//       *  *  *
+//    *  *  *  *
+// *  *  *  *  *
+
+function pattern7(n) {
+  for (let i = 0; i < n; i++) {
+    let row = "";
+    for (let j = 0; j < n - (i + 1); j++) {
+      row += "  ";
+    }
+    for (let k = 0; k <= i; k++) {
+      row += "* ";
+    }
+    console.log(row);
+  }
+}
+// pattern7(5);
+
+// patter -8
+
+// *  *  *  *  *
+//    *  *  *  *
+//       *  *  *
+//          *  *
+//             *
+
+// [space start]
+//  [0,5] for space => space < i , for start start< (n-i)
+//  [1,4]
+//  [2,3]
+//  [3,2]
+//  [4,1]
+
+function pattern8(n) {
+  for (let i = 0; i < n; i++) {
+    let row = "";
+    for (let j = 0; j < i; j++) {
+      row += "  ";
+    }
+    for (let k = 0; k < n - i; k++) {
+      row += "* ";
+    }
+    console.log(row);
+  }
+}
+// pattern8(5);
+
+// pattern-10
+
+//  *
+//  * *
+//  * * *
+//  * * * *
+//  * * * * *
+//  * * * *
+//  * * *
+//  * *
+//  *
+
+//  row = 9 so till row 5 inner loop will go to equal to no of row
+// but when will reach to row no 6 then inner loop will run n-(i-1) because star is started to decrement
+
+function patter9(n) {
+  for (i = 1; i <= n; i++) {
+    let starLength = i;
+    // if (i >= 6) starLength = n - (i - 1);
+    if (i >= Math.floor(n / 2) + 1) starLength = n - (i - 1);
+    let row = "";
+    for (let j = 1; j <= starLength; j++) {
+      row += "* ";
+    }
+    console.log(row);
+  }
+}
+
+// patter9(7);
+
+// patter 10
+
+// 1             1
+// 1 2         2 1
+// 1 2 3     3 2 1
+// 1 2 3 4 4 3 2 1
+// [number, space, number]
+// [1,6,1] will be 3 inner loop one for number second for space, third one again for number
+// [2,4,2]
+// [3,2,3]
+// [4,0,4]
+
+function patter10(n) {
+  for (let i = 1; i <= n; i++) {
+    // number-1
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      row += `${j} `;
+    }
+    // for space
+    for (let k = 1; k <= 2 * n - 2 * i; k++) {
+      row += `  `;
+    }
+    // number
+    for (let l = i; l >= 1; l--) {
+      //  because second no is starting like 4,3,2,1
+      row += `${l} `;
+    }
+    console.log(row);
+  }
+}
+// patter10(9);
+
+// patter -11
+// 1
+// 0 1
+// 1 0 1
+// 0 1 0 1
+// 1 0 1 0 1
+
+function patter11(n) {
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    let printNum = 1;
+    if (i % 2 === 0) printNum = 0;
+    for (let j = 1; j <= i; j++) {
+      row += `${printNum} `;
+      printNum = 1 - printNum;
+    }
+    console.log(row);
+  }
+}
+patter11(5);
