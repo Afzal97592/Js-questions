@@ -211,4 +211,40 @@ function lcmAndGcd(a, b) {
   return [lcmValue, gcdValue];
 }
 
-console.log(lcmAndGcd(14, 8));
+// console.log(lcmAndGcd(14, 8));
+
+function sumOfDivisors(N) {
+  //your code here
+  let sum = 0;
+  function sumOfNum(x) {
+    let individualSum = 0;
+    for (let i = 1; i <= x; i++) {
+      if (x % i === 0) {
+        individualSum += i;
+      }
+    }
+    // console.log("individualSum___", individualSum);
+    return individualSum;
+  }
+
+  for (let i = 1; i <= N; i++) {
+    sum += sumOfNum(i);
+  }
+  return sum;
+}
+// console.log("sum_____", sumOfDivisors(10));
+
+function minJump(arr, n) {
+  let jump = 0;
+  let y = 0;
+  if (arr[0] === 0) return -1;
+  for (let i = 0; i < n; i = i + y) {
+    if (arr[i] <= n - 1) {
+      y = i + arr[i];
+      jump++;
+    }
+  }
+  return jump;
+}
+// console.log("jump_", minJump([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11));
+console.log("jump_", minJump([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 11));
