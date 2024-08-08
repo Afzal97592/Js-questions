@@ -72,4 +72,143 @@ function isArmstrongNo(num) {
   return duplicateNum === num;
 }
 
-console.log("isArmstrongNo___", isArmstrongNo(135));
+// console.log("isArmstrongNo___", isArmstrongNo(135));
+
+// print all divisors of given number
+// Ex:- 8=> 1,2,4,8
+// Ex:- 12=> 1,2,3,4,6,12
+
+// O(n) => time complexity of this question
+
+// second  method
+// 1*36 = 36
+// 2*18 = 36  first half
+// 3*12 = 36
+// 4*9 = 36
+// 6*6 = 36-----sqrt
+// 9*4 = 36
+// 12*3 = 36
+// 18*2 = 36 second half
+// 36*1 = 36
+
+function printAllDivisor(n) {
+  let divisors = "";
+
+  // first method
+  // for (let i = 1; i <= n; i++) {
+  //   if (n % i === 0) {
+  //     divisors += `${i} `;
+  //   }
+  // }
+
+  // second  method
+  for (let i = 1; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      divisors += `${i} `;
+      if (n / i !== i) {
+        divisors += `${n / i} `;
+      }
+    }
+  }
+  return divisors;
+  // 7830592357
+}
+// console.log("divisors___", printAllDivisor(17));
+
+// check is prime or not
+//  definition is if number is divided by 1 or itself so its prime number so else not which means prime no have only two factors
+
+function isPrimeNo(n) {
+  let count = 0;
+  // method 1;
+  // for (let i = 1; i <= n; i++) {
+  //   if (n % i === 0) {
+  //     count++;
+  //   }
+  // }
+
+  // second method with square root similar to prime no
+  for (let i = 1; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      count++;
+      if (n / i !== i) {
+        count++;
+      }
+    }
+  }
+  return count === 2;
+}
+// console.log("isPrimeNo_____", isPrimeNo(23));
+
+// GCD-> greatest common factor
+
+function findGCD(n1, n2) {
+  let gcd = 1;
+  for (let i = 1; i <= Math.min(n1, n2); i++) {
+    if (n1 % i === 0 && n2 % i === 0) {
+      gcd = i;
+    }
+  }
+  return gcd;
+}
+// console.log("gcd is___", findGCD(20, 40));
+
+// second method
+// gcd(a,b) = gcd(a-b, b) while a>b till one of them become 0 and remaining one will be the gcd
+// ex: gcd(5,8) = gcd(3,5) =>gcd(2,3) =>gcd(1,2) =>gcd(1,1) =>gcd(0,1) swapping with greater one and applying formula 5steps
+// also gcd(a,b) = gcd(a%b, b) a>b till one of them become 0 and remaining one will be the gcd
+
+// gcd(5,8) =>gcd(8%5, 5) =>gcd(3,5) => gcd(5%3,3) =>gcd(2,3) =>gcd(1,2) =>gcd(0,1) => 1 only 3steps
+
+function findGcd(a, b) {
+  while (a > 0 && b > 0) {
+    if (a > b) {
+      a = a % b;
+    } else {
+      b = b % a;
+    }
+  }
+  return a === 0 ? b : a;
+}
+// console.log(findGcd(12, 16));
+
+var reverse = function (x) {
+  // formula is to get reverse
+  // revresNum*10+lastdigit
+  const MIN = -(2 ** 31);
+  const MAX = 2 ** 31 - 1;
+  console.log(MIN, MAX);
+  let revreseNo = 0;
+  if (x < 0) {
+    x = -1 * x;
+  }
+  while (x > 0) {
+    let lastDigit = x % 10;
+    revreseNo = revreseNo * 10 + lastDigit;
+    x = Math.floor(x / 10);
+  }
+  return MIN <= reverseNum && reverseNum <= MAX ? revreseNo : 0;
+};
+
+// console.log(reverse(1534236469));
+
+function lcmAndGcd(a, b) {
+  //code here
+  // formula of gcd(a,b) => gcd(a%b, b) while a>0 and this will run until one of them become 0
+  //  formula of lcm = a*b/gcd(a,b)
+  function getGcd(x, y) {
+    while (x > 0 && y > 0) {
+      if (x > y) {
+        x = x % y;
+      } else {
+        y = y % x;
+      }
+    }
+    return x === 0 ? y : x;
+  }
+  let gcdValue = getGcd(a, b);
+  let lcmValue = (a * b) / gcdValue;
+  return [lcmValue, gcdValue];
+}
+
+console.log(lcmAndGcd(14, 8));
