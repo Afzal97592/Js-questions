@@ -238,13 +238,13 @@ function minJump(arr, n) {
   let jump = 0;
   let y = 0;
   if (arr[0] === 0) return -1;
-  for (let i = 0; i < n; i = i + y) {
-    if (arr[i] <= n - 1) {
-      y = i + arr[i];
-      jump++;
-    }
+  for (let i = 0; i < n - 1; i = y) {
+    y = i + arr[i];
+    jump++;
   }
   return jump;
 }
-// console.log("jump_", minJump([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11));
+console.log("jump_", minJump([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11));
 console.log("jump_", minJump([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 11));
+
+console.log("jump_", minJump([2, 3, 1, 1, 4], 5));
