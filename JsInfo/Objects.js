@@ -121,8 +121,34 @@ let user5 = {
 
 let clone = structuredClone(user5);
 
-console.log(user5.sizes === clone.sizes); // false, different objects
+// console.log(user5.sizes === clone.sizes); // false, different objects
 
 // user and clone are totally unrelated now
 user5.sizes.width = 60; // change a property from one place
-console.log(clone.sizes.width);
+// console.log(clone.sizes.width);
+
+let user6 = { name: "Afzal" };
+admin = user6;
+user6 = null; // clean the memory called garbage collector because lost the reference
+// console.log(admin);
+
+// In JavaScript, the garbage collector is like a cleaner that automatically erases the notes (memory) that are no longer needed, freeing up space for new ones.
+
+let task = { description: "Finish homework" };
+task = null;
+// so task will lost the reference of from memory and free up the space from memory
+
+let user7 = {
+  name: "John",
+  age: 30,
+
+  sayHi() {
+    // console.log(user7.name); // leads to an error
+    // console.log(this.name); // will give the correct output now its representing to current reference not to user7 specific
+  },
+};
+
+let admin2 = user7;
+user7 = null; // overwrite to make things obvious
+
+admin2.sayHi(); // TypeError: Cannot read property 'name' of null
