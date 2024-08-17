@@ -1,5 +1,5 @@
 // [1,2,1,2,2,3,4,5,5,5,5]
-// make the object and add the count element according to appearance
+// make the object and add the count element according to appearance.
 
 function createObj(arr) {
   let resObj = {};
