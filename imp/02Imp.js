@@ -22,11 +22,18 @@
 
 // - State and Props
 
-// - Hooks
+// ---------------- Hooks --------------------//
+// In React, a hook is a special function that lets you "hook into" React features and lifecycle methods from within a functional component.
+
+// Rules of Hooks: Hooks can only be called at the top level of a functional component or within another hook. They cannot be called inside loops, conditions, or nested functions.
 
 // - useEffect, useState - for beginners
 
 // - useMemo, useLayoutEffect, useCallback, useRef, useReducer - for advanced
+
+// useLayoutEffect
+// useLayoutEffect is a version of useEffect that fires before the browser repaints the screen.
+// perform the layout measurements before browser repaints the screen
 
 // - Prop Drilling
 
