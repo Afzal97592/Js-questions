@@ -65,6 +65,8 @@
 // JAVASCRIPT
 
 // - PROMISE
+// It provides a way to handle the asynchronous operation more efficiently by allowing you attached callback for success (.then) and failure(.catch)
+// promise can be one of three states Pending, resolved, Rejected
 
 // - CLOSURE
 
@@ -73,6 +75,14 @@
 // - event loop
 
 // - async await
+// the word async before a function means is the function will return the promise.
+// Other values are wrapped in a resolved promise automatically.
+// async function f() {
+//     return 1;
+//   }
+//   f().then(alert); // 1
+
+// The key word wait means the javascript wait until and unless promise settles and returns the result
 
 // - callback hell
 
@@ -81,6 +91,21 @@
 // - LET,VAR,CONST Difference
 
 // - Spread operator, Ternary operator
+
+// Rest operator:- A function can be call with any numbers of arguments
+//  means if i am calling function
+
+// function sumAll(...args) { // args is the name for the array
+//   let sum = 0;
+
+//   for (let arg of args) sum += arg;
+
+//   return sum;
+// }
+
+// alert( sumAll(1) ); // 1
+// alert( sumAll(1, 2) ); // 3
+// alert( sumAll(1, 2, 3) ); // 6
 
 // - Login, Register functionality
 
@@ -93,6 +118,49 @@
 // ADVANCED LEVEL JAVASCRIPT
 
 // polyfill for map, filter, reduce
+
+// Polyfill for map :-
+Array.prototype.myMap = function (cb) {
+  let arr = [];
+  for (let i = 0; i < this.length; i++) {
+    arr.push(cb(this[i], i, this));
+  }
+  return arr;
+};
+const nums = [1, 2, 3, 4];
+let res = nums.myMap((ele, i, arr) => {
+  return ele * 2;
+});
+// console.log("res____", res);
+
+// filter polyFill
+
+Array.prototype.myFilter = function (cb) {
+  let arr = [];
+  for (let i = 0; i < this.length; i++) {
+    if (cb(this[i], i, this)) {
+      arr.push(this[i]);
+    }
+  }
+  return arr;
+};
+
+const myFilterRes = [1, 2, 3, 4].myFilter((ele, i, arr) => ele > 1);
+// console.log("myFilterRes___", myFilterRes);
+
+// reduce polyFill
+
+Array.prototype.myReduce = function (cb, acc) {
+  let res = acc;
+  for (let i = 0; i < this.length; i++) {
+    res = cb(res, this[i]);
+  }
+  return res;
+};
+
+const myArr = [2, 4, 5, 6];
+const myReduceResult = myArr.myReduce((acc, elem) => acc * elem, 1);
+console.log("myReduceResult", myReduceResult);
 
 // debouncing - delaying the response
 
