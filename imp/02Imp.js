@@ -160,7 +160,7 @@ Array.prototype.myReduce = function (cb, acc) {
 
 const myArr = [2, 4, 5, 6];
 const myReduceResult = myArr.myReduce((acc, elem) => acc * elem, 1);
-console.log("myReduceResult", myReduceResult);
+// console.log("myReduceResult", myReduceResult);
 
 // debouncing - delaying the response
 
