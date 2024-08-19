@@ -35,11 +35,26 @@
 // useLayoutEffect is a version of useEffect that fires before the browser repaints the screen.
 // perform the layout measurements before browser repaints the screen
 
+// useMemo :- useMemo nothing just cached the result of calculation between rerenders
+// means if we are handling any expensive calculation so we can make that expensive calculation inside a useMemo which will cached the result of that calculation if nothing is changing in the result.
+
+// useCallback :- useCallback cached a function between re-render component
+// const cacheFn = useCallback(()=>{},[dependencies])
+// suppose i am passing a function as props to child and handling any functionality in parent so on every re-render that not create the new reference of that function thats why we use the useCallback.
+
+// useRef -
+// useRef is a hook that provides a way to create the mutable reference that persist across re-renders. means updating a useRef value dose not trigger a re renders of a components.
+
+//it commonly used to directly interact with dom element or  keep reference to a mutable values that dose not require a re-rendering
+
 // - Prop Drilling
 
 // - Passing data from child ->parent & vice versa
+// parent to child using prop drilling
+// child to parent using state lifting up using callback
 
 // - Context api
+//  handle the state management globally means when we are passing props from parent to child tree or child to parent so this is not a gud way we also can create the context globally and also can handle the both side state management using context api
 
 // Redux :-
 
