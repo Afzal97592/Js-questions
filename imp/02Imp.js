@@ -163,26 +163,70 @@ const myReduceResult = myArr.myReduce((acc, elem) => acc * elem, 1);
 // console.log("myReduceResult", myReduceResult);
 
 // debouncing - delaying the response
+// delaying response on functionality suppose making query on search so after enter the last key of api make the callafter certain given time
 
 // throttlling
+// handle any functionality with given certain time.
 
 // memoization
+// used for optimization applications means if we are handling expensive calculations then its cache the result.
 
 // Event Delegation
+// So event delegation is a technique where instead of attaching every event listener to every  individual element we  attached a event listener to parent element.
+
+// Imagine you have a list with multiple items, and you want to handle clicks on each item. Instead of adding a click listener to every single item, which could make the code bulky and harder to manage, you attach the listener to the parent element, like the ul. Then, when any item in the list is clicked, the event bubbles up to the parent, and we handle it there. This keeps the code clean and improves performance, especially when you're dealing with dynamic elements that might be added or removed later."
 
 // Event Propagation
 
+// Event propagation in JavaScript describes how an event travels through the DOM after being triggered. It happens in three phases: capturing, target, and bubbling.
+
+// - First is the capturing phase, where the event moves down from the root to the target element, almost like it's getting ready to trigger.
+
+// - Then comes the target phase, where the event actually triggers on the specific element, say a button click.
+
+// - Finally, there's the bubbling phase, where the event bubbles back up the DOM tree, allowing parent elements to also respond to that event.
+
 // Temporal Deadzone
+// - Temporal Dead Zone (TDZ) refers to the period when a variable is declared but not yet initialized.
+// - it applies on let and const variables in block scope
+// - so if we try to access the variables in TDZ it will through the reference error.
 
 // Lexical Scope
 
+// Lexical scope, refers to the visibility of variables based on their position in the source code. In JavaScript, the scope of a variable is determined at the time of writing the code, not at runtime.
+
 // Variable Shadowing
+//  nothing just suppose when we declared the variable in outer scope and then with same name we declared in inner scope then inner scope access the inner declared variable on outer declared variable outer declared variable got the shadow
 
 // setTimeout
 
 // call, bind, apply
 
+// currying
+//  - currying is a functional programming technique that transformed a function to take the the multiple arguments into a series of function that take the single arguments
+
+// Ex:-
+function add(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+// const res1 = add(2);
+// const res2 = res1(3);
+// console.log(res2);
+//  or
+// console.log(add(2)(6));
+
 // Infinite currying
+// - Infinite currying is an extension of currying that allows a function to be called multiple times without specific limit, returning the intermediate result until a termination conditione meet
+
+function add(a) {
+  return function (b) {
+    if (b === undefined) return a; // Termination condition
+    return add(a + b);
+  };
+}
+// console.log(add(2)(4)(5)());
 
 // Implement Promise.all()
 
