@@ -229,10 +229,96 @@ function add(a) {
 // console.log(add(2)(4)(5)());
 
 // Implement Promise.all()
+// Promise.all() - is a method suppose when we are handling so many promises paralleley so promise.all takes an array of all promises and return a single promise and if all of them resolved then its resolve the promise else if any of them rejected then it reject the the promise
+
+function fetchUserData() {
+  return fetch("https://api.example.com/user").then((response) =>
+    response.json()
+  );
+}
+
+function fetchPostsData() {
+  return fetch("https://api.example.com/posts").then((response) =>
+    response.json()
+  );
+}
+
+function fetchCommentsData() {
+  return fetch("https://api.example.com/comments").then((response) =>
+    response.json()
+  );
+}
+
+// Promise.all([fetchUserData(), fetchPostsData(), fetchCommentsData()])
+//   .then(([userData, postsData, commentsData]) => {
+//     console.log("User Data:", userData);
+//     console.log("Posts Data:", postsData);
+//     console.log("Comments Data:", commentsData);
+//   })
+//   .catch((error) => {
+//     console.error("One of the API calls failed:", error);
+//   });
 
 // Implicit and explicit binding
 
+// Implicit Binding - it happen automatically when we invoked a function as a method of an object means
+const user = {
+  name: "Afzal",
+  greet: function () {
+    console.log(`Hello ${this.name}`);
+  },
+};
+// user.greet();
+// so here this is referring  object to it self
+
+// Explicity binding - Explicitly binding allow us to set the this value \ manually to the function using call, apply, bind methods
+// so this is gives the more control to us
+
+function greet() {
+  console.log(`Hello ${this.name} morning`);
+}
+let person1 = { name: "Afzal" };
+let person2 = { name: "Ahmad" };
+// greet.call(person1);
+// greet.call(person2);
+greet.apply(person1, ["hey", "how are  you", "?"]);
+// const bindMethod = greet.bind(person1);
+// bindMethod();
+// bind method return the  function
+
 // First Class functions
+// In JavaScript, functions are treated as first-class citizens (or first-class objects). This means that functions in JavaScript are just like any other variable. They can be:
+
+// - Assigned to a variable.
+// - Passed as an argument to another function.
+// - Returned from a function.
+// - Stored in data structures like arrays and objects.
+// - Simply put, in JavaScript, a function can do anything that any other object or variable can do.
+
+function greet(name) {
+  return "Hello, " + name;
+}
+
+const greetFunction = greet;
+// console.log(greetFunction("John")); // Output: "Hello, John"
+
+function greet(name) {
+  return "Hello, " + name;
+}
+
+function sayGreeting(greetFn, name) {
+  console.log(greetFn(name));
+}
+
+// sayGreeting(greet, "Alice"); // Output: "Hello, Alice"
+function createGreeting(greeting) {
+  return function (name) {
+    return greeting + ", " + name;
+  };
+}
+
+const sayHello = createGreeting("Hello");
+// console.log(sayHello("Bob")); // Output: "Hello, Bob"
 
 // Execution Context
 
@@ -241,10 +327,17 @@ function add(a) {
 // CSS
 
 // - What are semantic Tags
+// Header, nav, main, article, aside, mark, footer and many ore which help to understand the structure of web page.
 
 // - Rem and em
+// Relative to Parent Element: The em unit is relative to the font size of the element’s parent. This means that if you set an element’s size using em, it will be calculated based on the font size of the element's parent.
+// if parent font size is 20px and child using 2rem then it will be 2*20px => 40px
+
+// Relative to Root Element: The rem unit stands for "root em" and is relative to the root element’s (<html>) font size, typically set using html { font-size: ... }. This makes rem consistent across the entire document regardless of where it’s used.
+// 1rem => 16px
 
 // - id and class
+// uniqueness  and reusablity
 
 // - div and span
 
@@ -265,12 +358,20 @@ function add(a) {
 // - inline vs block elements
 
 // - can we use two classes in a div
+// yes
 
 // - !important mean in CSS?
+// higher priority
 
 // - colspan
+// related to th, td which specify the colum of any table cell
 
 // - specificity
+// Specificity is calculated based on the types of selectors used in the CSS rule. It's represented by a four-part value (a, b, c, d):
+// Inline styles: (1,0,0,0) – Highest specificity
+// IDs: (0,1,0,0)
+// Classes, attributes, pseudo-classes: (0,0,1,0)
+// Elements, pseudo-elements: (0,0,0,1)
 
 // - Animations - hover
 
@@ -378,8 +479,10 @@ function add(a) {
 // aur sath me
 // //1 What is the output of
 // console.log(3>2>1)
-// console.log("" == [null])
+// console.log("" == [null])]
+// true because type check is loosly
 // console.log(2 * null);
+// null is a falsy value so 2*0 =>0
 
 // //2. GUess the output
 // var x = 3;
@@ -410,6 +513,7 @@ function add(a) {
 // return this.firstName;
 // }
 // }
+// student.getName getter method allow to use getname as property
 // //5. Destructure the city name bangalore
 // const user = {
 // 'name': 'Alex',
@@ -425,6 +529,10 @@ function add(a) {
 // }
 // }
 // }
+
+// const { department: { address: { city } } } = user;
+
+// console.log(city); // Outputs: Bangalore
 
 // //6. remove element 4 from arr
 // const arr = [1,2,3,4,5]
