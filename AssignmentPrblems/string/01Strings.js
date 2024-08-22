@@ -83,3 +83,23 @@ function longestCommonPrefix(strs) {
 }
 
 // console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+
+// rotation string given string is qual to goal string or not after some shift move
+
+function rotation(str, goal) {
+  let res = str;
+  for (let i = 0; i < str.length - 1; i++) {
+    res = rotation2(res);
+    if (res === goal) {
+      return true;
+    }
+  }
+  return false;
+}
+function rotation2(str) {
+  let res = str;
+  res = str.slice(1) + str[0];
+  return res;
+}
+console.log("res___", rotation("abcde", "cdeab"));
+console.log("res___", rotation("abcde", "abced"));
