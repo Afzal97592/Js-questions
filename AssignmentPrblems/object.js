@@ -20,4 +20,18 @@ function createObj(arr) {
   }
   return true;
 }
-console.log(createObj([1, 2, 1, 2, 2, 3, 4, 5, 5, 5, 5]));
+// console.log(createObj([1, 2, 1, 2, 2, 3, 4, 5, 5, 5, 5]));
+
+// reverse array
+
+// [1,2,3,4,5]
+function reverseArr(arr) {
+  for (let i = 0; i < Math.floor(arr.length / 2); i++) {
+    let temp = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = temp;
+  }
+  return arr;
+}
+// console.log(reverseArr([5, 2, 1, 5, 2, 3]));
+// console.log(reverseArr(["A", "B", "C", "D", "E"]));
