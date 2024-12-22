@@ -117,6 +117,18 @@ const copy = { ...obj1 }; // { a: 1 }
 // alert( sumAll(1, 2) ); // 3
 // alert( sumAll(1, 2, 3) ); // 6
 
+// The rest operator, on the other hand, is used to gather elements into an array or object. For instance, in a function:
+function sumAll(...numbers) {
+  return numbers.reduce((acc, num) => acc + num, 0);
+}
+console.log(sumAll(1, 2, 3)); // 6
+const [first, ...rest] = [1, 2, 3];
+console.log(first); // 1
+console.log(rest);  // [2, 3]
+
+
+
+
 // - Login, Register functionality
 
 // - String methods - toString, toUppercase, split, toFixed,
