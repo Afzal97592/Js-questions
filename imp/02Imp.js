@@ -92,6 +92,16 @@
 
 // - Spread operator, Ternary operator
 
+// The spread operator is used to expand elements of arrays or objects
+
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4]
+
+const obj1 = { a: 1 };
+const copy = { ...obj1 }; // { a: 1 }
+
+
 // Rest operator:- A function can be call with any numbers of arguments
 //  means if i am calling function
 
