@@ -1,20 +1,20 @@
 function pattern(n) {
-  let res = "";
   for (let i = 0; i < n; i++) {
+    let res = "";
     //  space
     for (let j = 0; j < n - (i + 1); j++) {
-      res += " ";
+      res += "  ";
     }
     // star
     for (let k = 0; k < 2 * i + 1; k++) {
-      res += "*";
+      res += "* ";
     }
     // space
     // useImpretiveHandler
     for (let l = 0; l < n - (i + 1); l++) {
-      res += " ";
+      res += "  ";
     }
+    console.log(res);
   }
-  return res;
 }
-console.log(pattern(4));
+pattern(5);
