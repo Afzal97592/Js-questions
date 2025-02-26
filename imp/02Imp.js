@@ -17,9 +17,7 @@
 // - Have to check the behavior, communication and learning attitude.
 
 // React :-
-
 // - Lifecycle methods both functional components and class components.
-
 // - State and Props
 
 // ---------------- Hooks --------------------//
@@ -49,7 +47,7 @@
 
 // - Prop Drilling
 
-// - Passing data from child ->parent & vice versa
+// - Passing data from child -> parent & vice versa
 // parent to child using prop drilling
 // child to parent using state lifting up using callback
 
@@ -101,7 +99,6 @@ const combined = [...arr1, ...arr2]; // [1, 2, 3, 4]
 const obj1 = { a: 1 };
 const copy = { ...obj1 }; // { a: 1 }
 
-
 // Rest operator:- A function can be call with any numbers of arguments
 //  means if i am calling function
 
@@ -113,9 +110,9 @@ const copy = { ...obj1 }; // { a: 1 }
 //   return sum;
 // }
 
-// alert( sumAll(1) ); // 1
-// alert( sumAll(1, 2) ); // 3
-// alert( sumAll(1, 2, 3) ); // 6
+// alert(sumAll(1)); // 1
+// alert(sumAll(1, 2)); // 3
+// alert(sumAll(1, 2, 3)); // 6
 
 // The rest operator, on the other hand, is used to gather elements into an array or object. For instance, in a function:
 function sumAll(...numbers) {
@@ -124,10 +121,7 @@ function sumAll(...numbers) {
 console.log(sumAll(1, 2, 3)); // 6
 const [first, ...rest] = [1, 2, 3];
 console.log(first); // 1
-console.log(rest);  // [2, 3]
-
-
-
+console.log(rest); // [2, 3]
 
 // - Login, Register functionality
 

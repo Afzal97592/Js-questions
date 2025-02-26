@@ -40,10 +40,37 @@ const removeDuplicates = (nums) => {
 // console.log(k2); // Output: 5
 // console.log(nums2.slice(0, k2)); // Output: [0, 1, 2, 3, 4]
 
+// var removeDuplicates2 = function (nums) {
+//   nums.sort((a, b) => a - b);
+//   let k = 1;
+//   for (let i = 1; i < nums.length; i++) {
+//     if (nums[i] !== nums[i - 1]) {
+//       nums[k] = nums[i];
+//       k++;
+//     }
+//   }
+//   return nums.slice(0, k);
+// };
+
+// console.log(
+//   "newArr___",
+//   removeDuplicates2([1, 1, 2, 1, 3, 2, 2, 1, 2, 4, 5, 6, 3])
+// );
+
 var removeDuplicates2 = function (nums) {
-  let k = 1;
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== nums[i - 1]) {
+  let k = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    let isDuplicate = false;
+
+    for (let j = 0; j < k; j++) {
+      if (nums[i] === nums[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+
+    if (!isDuplicate) {
       nums[k] = nums[i];
       k++;
     }
@@ -51,4 +78,7 @@ var removeDuplicates2 = function (nums) {
   return nums.slice(0, k);
 };
 
-console.log("newArr___", removeDuplicates2([1, 1, 2]));
+console.log(
+  "newArr___",
+  removeDuplicates2([1, 1, 2, 1, 3, 2, 2, 1, 2, 4, 5, 6, 3])
+);
