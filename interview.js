@@ -126,5 +126,70 @@ var expect = function (val) {
   return obj;
 };
 
-console.log(expect(5).toBe(5));
-console.log(expect(5).notToBe(5));
+// console.log(expect(5).toBe(5));
+// console.log(expect(5).notToBe(5));
+
+var filter = function (arr, fn) {
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i)) {
+      res.push(arr[i]);
+    }
+  }
+  return res;
+};
+
+// console.log(
+//   filter([0, 10, 20, 30], function greaterThan10(n) {
+//     return n > 10;
+//   })
+// );
+
+var reduce = function (nums, fn, init) {
+  if (nums.length === 0) return init;
+  let res = init;
+  for (let i = 0; i < nums.length; i++) {
+    res = fn(res, nums[i]);
+  }
+  return res;
+};
+// console.log(
+//   reduce(
+//     [1, 2, 3, 4],
+//     function sum(accum, curr) {
+//       return accum + curr;
+//     },
+//     0
+//   )
+// );
+
+var removeDuplicates = function (nums) {
+  nums.sort((a, b) => a - b);
+  let k = 1;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[i - 1]) {
+      nums[k] = nums[i];
+      k++;
+    }
+  }
+  console.log(nums);
+  return nums.slice(0, k);
+};
+
+// console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+
+var once = function (fn) {
+  return function (...args) {
+    let res;
+    // for (let i = 0; i < args.length; i++) {
+    res = fn(...args);
+    return res;
+    // }
+    // return res;
+  };
+};
+
+const fn = (a, b, c) => a + b + c;
+
+const data = once(fn);
+console.log(data(1, 2, 3), "data+++");
