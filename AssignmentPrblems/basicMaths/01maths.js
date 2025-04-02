@@ -244,7 +244,47 @@ function minJump(arr, n) {
   }
   return jump;
 }
-console.log("jump_", minJump([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11));
-console.log("jump_", minJump([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 11));
+// console.log("jump_", minJump([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9], 11));
+// console.log("jump_", minJump([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 11));
 
-console.log("jump_", minJump([2, 3, 1, 1, 4], 5));
+// console.log("jump_", minJump([2, 3, 1, 1, 4], 5));
+
+function findMissingNumber(arr) {
+  let max = Math.max(...arr);
+  let min = Math.min(...arr);
+  let maxSum = ((max + 1) * max) / 2;
+  let minSum = ((min - 1) * min) / 2;
+  let expectedSum = maxSum - minSum;
+  let totalSum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    totalSum += arr[i];
+  }
+
+  let missingNumber = expectedSum - totalSum;
+  return missingNumber;
+}
+
+const numbers = [3, 4, 5, 6, 8, 9, 10];
+const missingNumber = findMissingNumber(numbers);
+// console.log("The missing number is:", missingNumber);
+
+function mergeSortedArrays(arr1, arr2) {
+  let i = 0,
+    j = 0;
+  const merged = [];
+
+  while (i <= arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      merged.push(arr1[i]);
+      i++;
+    } else {
+      merged.push(arr2[j]);
+      j++;
+    }
+  }
+  return merged;
+}
+
+// const arr1 = [1, 3, 5];
+// const arr2 = [2, 4, 6];
+// console.log(mergeSortedArrays(arr1, arr2));
