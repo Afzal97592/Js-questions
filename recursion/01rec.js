@@ -96,4 +96,52 @@ function factorial(n) {
   if (n === 0 || n === 1) return 1;
   return factorial(n - 1) * n;
 }
-console.log(factorial(10));
+// console.log(factorial(10));
+
+// power function (m)^n
+
+function pow(m, n) {
+  if (n === 0) return 1;
+  return pow(m, n - 1) * m;
+}
+function mainPow() {
+  let m = 2,
+    n = 9;
+
+  // let res = pow(m, n);
+  let res = pow2(m, n);
+  console.log(res);
+}
+
+// more optimize  way to calculate power
+
+function pow2(m, n) {
+  if (n === 0) return 1;
+  if (n % 2 === 0) {
+    return pow2(m * m, n / 2);
+  } else {
+    return m * pow2(m * m, (n - 1) / 2);
+  }
+}
+// mainPow();
+
+// tailor series
+
+function mainTailorSeries() {
+  let x = 4,
+    n = 15;
+  let res = tailorSeries(x, n);
+  console.log(res);
+}
+let p = 1;
+let f = 1;
+function tailorSeries(x, n) {
+  let r;
+  if (n === 0) return 1;
+  r = tailorSeries(x, n - 1);
+  p = p * x;
+  f = f * n;
+  return r + p / f;
+}
+
+mainTailorSeries();
