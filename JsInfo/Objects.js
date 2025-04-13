@@ -152,3 +152,15 @@ let admin2 = user7;
 user7 = null; // overwrite to make things obvious
 
 admin2.sayHi(); // TypeError: Cannot read property 'name' of null
+
+// garbage collector
+// The garbage collector is like a cleaner that automatically erases the notes (memory) that are no longer needed, freeing up space for new ones.
+
+// memory leak
+// A memory leak occurs when a program keeps references to objects that are no longer needed, even though the program is no longer using them. This can happen when an object is stored in a global variable or when a function keeps a reference to an object that is no longer needed.
+
+// serialization of trees and deserialization of trees
+
+// JSON.stringify(obj) converts an object into a JSON string.
+// JSON.parse(str) converts a JSON string back into an object.
+// JSON.stringify() and JSON.parse() are used to convert JavaScript objects to JSON strings and vice versa
