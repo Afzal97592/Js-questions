@@ -82,3 +82,24 @@ console.log(
   "newArr___",
   removeDuplicates2([1, 1, 2, 1, 3, 2, 2, 1, 2, 4, 5, 6, 3])
 );
+
+// new method
+function removeDuplicate(arr) {
+  let k = 0;
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    let isDuplicate = false;
+    for (let j = 0; j < k; j++) {
+      if (arr[i] === arr[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    if (!isDuplicate) {
+      res[k] = arr[i];
+      k++;
+    }
+  }
+  return res;
+}
+console.log(removeDuplicate(arr5));

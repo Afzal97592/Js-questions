@@ -164,3 +164,23 @@ admin2.sayHi(); // TypeError: Cannot read property 'name' of null
 // JSON.stringify(obj) converts an object into a JSON string.
 // JSON.parse(str) converts a JSON string back into an object.
 // JSON.stringify() and JSON.parse() are used to convert JavaScript objects to JSON strings and vice versa
+
+class Person {
+  constructor(fname, lname) {
+    this.fname = fname;
+    this.lname = lname;
+  }
+  getFullName() {
+    return this.fname + " " + this.lname;
+  }
+}
+
+const p1 = new Person("Afzal", "Ahmad");
+const p2 = new Person("Ahmad", "Afzal");
+
+// console.log(p1.getFullName());
+// console.log(p2.getFullName());
+
+// class - Blueprint
+// object - Instance of class
+// constructor - A special method for creating and initializing an object instance of a class
