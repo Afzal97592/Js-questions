@@ -162,7 +162,7 @@ if (!Array.prototype.myShift) {
 
 // unshift
 // add the element to the first index of the array
-// return the length of the array\
+// return the length of the array
 // effect the original array
 
 //
@@ -179,11 +179,35 @@ if (!Array.prototype.myUnShift) {
     return this.length;
   };
 }
-const unshiftRes = arr1.myUnShift(100);
-console.log(unshiftRes);
-console.log(arr1);
+// const unshiftRes = arr1.myUnShift(100);
+// console.log(unshiftRes);
+// console.log(arr1);
 
 // splice
+// signature
+
+// console.log(arr1, "original");
+
+const resSplice = arr1.splice(1, 3, 0, 9, 8, 7, 6);
+// console.log(resSplice, "return from splice");
+// console.log(arr1, "effected");
+
+if (!Array.prototype.mySplice) {
+  Array.prototype.mySplice = function (start, length, ...items) {
+    const newArr = [];
+    for (let i = start; i <= length; i++) {
+      newArr.push(this[i]);
+    }
+
+    return newArr;
+  };
+}
+
+// const spliceRes = arr1.mySplice(1, 3);
+// console.log(spliceRes);
+
 // slice
 // concat
 // join
+
+let arr5 = [1, 3, 4, 1, 2, 5, 9, 7, 6, 5, 2, 4, 3, 2];
