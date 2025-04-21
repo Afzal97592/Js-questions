@@ -105,6 +105,7 @@ Object.assign(user4, source1, source2);
 // console.log(user4);
 const cloneWithAssign = Object.assign({}, user4);
 cloneWithAssign.name = "Ahmad";
+
 // console.log(cloneWithAssign, user4); // this will also give the different answer because we are cloning with assign so it also create the new reference so if i will change anything in cloned object then it will not reflect in original one because of different referenced
 
 // The call structuredClone(object) clones the object with all nested properties.
@@ -122,6 +123,7 @@ let user5 = {
 let clone = structuredClone(user5);
 
 // console.log(user5.sizes === clone.sizes); // false, different objects
+
 
 // user and clone are totally unrelated now
 user5.sizes.width = 60; // change a property from one place
@@ -184,3 +186,8 @@ const p2 = new Person("Ahmad", "Afzal");
 // class - Blueprint
 // object - Instance of class
 // constructor - A special method for creating and initializing an object instance of a class
+
+
+// if we are creating object with constructor so that new key word  is used to create the instance of class and create the new memory address in heap memory and that address is assigned to the object variable
+
+
