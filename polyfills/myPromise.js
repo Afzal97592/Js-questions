@@ -70,45 +70,50 @@ class MyPromise {
 
 // promise.all polyfill
 
-const func1 = () =>{
-  return new Promise((resolve, reject)=>
-    setTimeout(()=>resolve("func1 resolved"), 1000)
+const func1 = () => {
+  return new Promise((resolve, reject) =>
+    setTimeout(() => resolve("func1 resolved"), 1000)
+    // setTimeout(() => reject("func2 rejected"), 0)
+
   )
 }
 
-const func2 = () =>{
- return  new Promise((resolve, reject)=>
-    setTimeout(()=>resolve("func2 resolved"),5000)
-//  setTimeout(()=>reject("func2 rejected"),5000)
+const func2 = () => {
+  return new Promise((resolve, reject) =>
+    // setTimeout(()=>resolve("func2 resolved"),5000)
+    setTimeout(() => reject("func2 rejected"), 0)
+
   )
 }
 
-const func3 = () =>{
-  return new Promise((resolve, reject)=>
-    setTimeout(()=>resolve("func3 resolved"), 0)
+const func3 = () => {
+  return new Promise((resolve, reject) =>
+    setTimeout(() => resolve("func3 resolved"), 0)
+    // setTimeout(() => reject("func2 rejected"), 0)
+
   )
 }
 
 
-Promise.myAll = (promises) =>{
+Promise.myAll = (promises) => {
   let result = [];
   let n = promises.length;
   let resolvedCount = 0
-  return new Promise((resolve, reject)=>{
-promises.forEach((promise, index)=>{
+  return new Promise((resolve, reject) => {
+    promises.forEach((promise, index) => {
 
-    promise.then((res)=>{
-      result[index] = res;
-      resolvedCount++
-      if (resolvedCount === n) {
-        resolve(result);
+      promise.then((res) => {
+        result[index] = res;
+        resolvedCount++
+        if (resolvedCount === n) {
+          resolve(result);
+          return
+        }
+      }).catch((err) => {
+        reject(err);
         return
-      }
-    }).catch((err)=>{
-      reject(err);
-      return
+      })
     })
-})
 
   })
 }
@@ -117,24 +122,24 @@ promises.forEach((promise, index)=>{
 // with async await
 
 
-Promise.myAllWithAsync = (promises) =>{
+Promise.myAllWithAsync = (promises) => {
   let result = [];
   let n = promises.length;
   let promiseCount = 0
-  return new Promise((resolve, reject)=>{
-   promises.forEach(async(promise, index)=>{
-  try {
-    let res = await promise;
-    result[index] = res;
-  promiseCount++
-  promiseCount === n && resolve(result) 
-  return
-  } catch (error) {
-    reject(error);
-    return
-  }
- 
-})
+  return new Promise((resolve, reject) => {
+    promises.forEach(async (promise, index) => {
+      try {
+        let res = await promise;
+        result[index] = res;
+        promiseCount++
+        promiseCount === n && resolve(result)
+        return
+      } catch (error) {
+        reject(error);
+        return
+      }
+
+    })
   })
 }
 
@@ -145,34 +150,84 @@ Promise.myAllWithAsync = (promises) =>{
 // Promise.myAll([func1(), func2(), func3()]).then((res)=>console.log(res, "result of promises111")).catch((err)=>console.log(err))
 
 
-Promise.myAllWithAsync([func1(), func2(), func3()]).then((res)=>console.log(res, "result of promises0000")).catch((err)=>console.log(err))
+// Promise.myAllWithAsync([func1(), func2(), func3()]).then((res)=>console.log(res, "result of promises0000")).catch((err)=>console.log(err))
 
 
 // ------------------- Promise.all settled --------------------//
+// promise.any return first resolved value    
 
-Promise.myAllSettled = function(promises){
-let result = []
-let length = promises.length
-let promiseCount = 0
-return new Promise((resolve, reject)=>{
-  promises.forEach((promise, index)=>{
-    promise.then((res)=>{
-       result[index] = {status:'fulfilled', value:res}
-   
-    }).catch((err)=>{
-      result[index] = {status:'rejected', reason:err}
-    }).finally(()=>{
-      promiseCount++
-      if(length === promiseCount){
+Promise.myAllSettled = function (promises) {
+  let result = []
+  let length = promises.length
+  let promiseCount = 0
+  return new Promise((resolve, reject) => {
+    promises.forEach((promise, index) => {
+      promise.then((res) => {
+        result[index] = { status: 'fulfilled', value: res }
 
-        resolve(result)
-      }
+      }).catch((err) => {
+        result[index] = { status: 'rejected', reason: err }
+      }).finally(() => {
+        promiseCount++
+        if (length === promiseCount) {
+          resolve(result)
+        }
+      })
     })
   })
-})
 }
 
 // Promise.allSettled([func1(), func2(), func3()]).then((res)=>console.log(res, "result of promises111")).catch((err)=>console.log(err))
 
 
-Promise.myAllSettled([func1(), func2(), func3()]).then((res)=>console.log(res, "result of promises111")).catch((err)=>console.log(err))
+// Promise.myAllSettled([func1(), func2(), func3()]).then((res)=>console.log(res, "result of promises111")).catch((err)=>console.log(err))
+
+
+
+
+// ------------------ promise.any -------------------- //
+
+// promise.any return the first resolve value
+
+
+Promise.myAny = function (promises, index) {
+  let error = []
+  let errorCount = 0
+  let length = promises.length
+  return new Promise((resolve, reject) => {
+    if (length === 0 || !Array.isArray(promises)) {
+      reject("promises rejected")
+      return
+    }
+    promises.forEach((promise, index) => {
+      promise.then((res) => {
+        resolve(res)
+        return
+      })
+        .catch((err) => {
+          error[index] = err
+          errorCount++
+          if (errorCount === length) {
+            reject(error)
+            return
+          }
+        })
+    })
+  })
+}
+
+
+
+// Promise.any([func1(), func2(), func3()]).then((res) => {
+//   console.log("promise.any res: ", res)
+// }).catch((err) => {
+//   console.log("promise.any Error: ", err)
+// })
+
+
+
+Promise.myAny([func1(), func2(), func3()]).then((res) => {
+  console.log("promise.any res: ", res)
+}).catch((err) => {
+  console.log("promise.any Error: ", err)
+}) 
