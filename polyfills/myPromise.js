@@ -80,7 +80,7 @@ const func1 = () => {
 
 const func2 = () => {
   return new Promise((resolve, reject) =>
-    // setTimeout(()=>resolve("func2 resolved"),5000)
+    // setTimeout(() => resolve("func2 resolved"), 0)
     setTimeout(() => reject("func2 rejected"), 0)
 
   )
@@ -226,8 +226,40 @@ Promise.myAny = function (promises, index) {
 
 
 
-Promise.myAny([func1(), func2(), func3()]).then((res) => {
-  console.log("promise.any res: ", res)
-}).catch((err) => {
-  console.log("promise.any Error: ", err)
-}) 
+// Promise.myAny([func1(), func2(), func3()]).then((res) => {
+//   console.log("promise.any res: ", res)
+// }).catch((err) => {
+//   console.log("promise.any Error: ", err)
+// }) 
+
+
+
+Promise.myRace = function (promises) {
+
+  return new Promise((resolve, reject) => {
+    if (!Array.isArray(promises)) {
+      reject(new Error("race accept array"))
+      return
+    }
+
+    promises.forEach((promise) => {
+      promise.then((res) => {
+        resolve(res)
+        return
+      }
+      ).catch((error) => {
+        reject(error)
+        return
+      }
+      )
+    })
+
+  })
+
+}
+
+
+// Promise.race([func1(), func2(), func3()]).then((res) => console.log(res, "result of race")).catch((err) => console.log(err, "rac Error"))
+
+Promise.myRace([func1(), func2(), func3()]).then((res) => console.log(res, "result of race")).catch((err) => console.log(err, "rac Error"))
+
