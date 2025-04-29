@@ -77,4 +77,29 @@ function chunkArray(arr, n) {
     return res
 }
 
-console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3))
+// console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3))
+
+
+
+// Common elements in both array
+
+
+const data1 = [1, 3, 5, 7, 9];
+const data2 = [2, 7, 1, 8, 5];
+
+// output = [7,1,5];
+
+function findCommonElement(arr1, arr2) {
+    let res = [...arr1, ...arr2]
+    let resObj = {}
+    let result = []
+    for (let item of res) {
+        if (resObj[item]) {
+            result.push(item)
+        } else {
+            resObj[item] = 1
+        }
+    }
+    return result
+}
+// console.log(findCommonElement(data1, data2))
