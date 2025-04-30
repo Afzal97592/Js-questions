@@ -77,7 +77,19 @@ function chunkArray(arr, n) {
     return res
 }
 
-// console.log(chunkArray([1, 2, 3, 4, 5, 6, 7], 3))
+
+// Second solution
+
+
+function chunkArray2(arr, n) {
+    let res = []
+    for (let i = 0; i < arr.length; i += n) {
+        res.push(arr.slice(i, i + n))
+    }
+    return res
+}
+
+console.log(chunkArray2([1, 2, 3, 4, 5, 6, 7], 3))
 
 
 
