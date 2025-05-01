@@ -89,7 +89,7 @@ function chunkArray2(arr, n) {
     return res
 }
 
-console.log(chunkArray2([1, 2, 3, 4, 5, 6, 7], 3))
+// console.log(chunkArray2([1, 2, 3, 4, 5, 6, 7], 3))
 
 
 
@@ -100,6 +100,8 @@ const data1 = [1, 3, 5, 7, 9];
 const data2 = [2, 7, 1, 8, 5];
 
 // output = [7,1,5];
+
+// method :- 1
 
 function findCommonElement(arr1, arr2) {
     let res = [...arr1, ...arr2]
@@ -115,3 +117,59 @@ function findCommonElement(arr1, arr2) {
     return result
 }
 // console.log(findCommonElement(data1, data2))
+
+
+
+// method :- 2
+
+function findCommonElement2(arr1, arr2) {
+    let arr2Set = new Set(arr2)
+    let result = []
+    for (let item of arr1) {
+        if (arr2Set.has(item)) {
+            result.push(item)
+        }
+    }
+    return result
+}
+console.log(findCommonElement2(data1, data2))
+
+
+// first common element of all arrays
+
+// method one
+
+function commonElem(arr1, arr2, arr3) {
+
+    let val;
+
+    for (let i = 0; i < arr1.length; i++) {
+        let j = 0;
+        let k = 0;
+        val = arr1[i]
+        while (j < arr2.length && k < arr3.length) {
+            if (val === arr2[j] && val === arr3[k]) {
+                return val
+            } else {
+                j++
+                k++
+            }
+        }
+    }
+
+}
+// console.log(commonElem([1, 2, 3, 4], [2, 6, 7, 8], [2, 0, 9, 8]))
+
+
+function commonElementInArrays(arr1, arr2, arr3) {
+    let arr2Set = new Set(arr2)
+    let arr3Set = new Set(arr3)
+    for (let item of arr1) {
+        if (arr2Set.has(item) && arr3Set.has(item)) {
+            return item
+        }
+    }
+}
+
+
+// console.log(commonElementInArrays([3, 1, 2, 3, 4], [2, 6, 7, 1, 8, 3, 7], [2, 0, 1, 9, 8, 3]))
