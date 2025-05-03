@@ -132,10 +132,15 @@ function findCommonElement2(arr1, arr2) {
     }
     return result
 }
-console.log(findCommonElement2(data1, data2))
+// console.log(findCommonElement2(data1, data2))
 
 
 // first common element of all arrays
+
+
+// $2a$12$BpF7EdCgsA5cnH/okNTC/ePfDT6Op.ZdsfFHCJm6FOw76ao5mcXbq : Himreet
+
+// $2a$12$BpF7EdCgsA5cnH/okNTC/ePfDT6Op.ZdsfFHCJm6FOw76ao5mcXbq : siddu
 
 // method one
 
@@ -173,3 +178,38 @@ function commonElementInArrays(arr1, arr2, arr3) {
 
 
 // console.log(commonElementInArrays([3, 1, 2, 3, 4], [2, 6, 7, 1, 8, 3, 7], [2, 0, 1, 9, 8, 3]))
+
+
+
+// count the vowels in given string 
+// M:-1
+
+function countVowels(str) {
+    // Your implementation
+    let duplicateStr = str.toLowerCase()
+    let count = 0
+    for (let i = 0; i < duplicateStr.length; i++) {
+        if (duplicateStr[i] === 'a' || duplicateStr[i] == 'e' || duplicateStr[i] === 'i' || duplicateStr[i] === 'o' || duplicateStr[i] === 'u') {
+            count++
+        }
+    }
+    return count
+}
+
+// console.log(countVowels("JavaScrIpt"))
+
+// M:-2
+function countVowels2(str) {
+    // Your implementation
+    let vowelsSet = new Set(["a", "e", "i", "o", "u"])
+    let count = 0
+    for (let char of str.toLowerCase()) {
+        if (vowelsSet.has(char)) {
+            count++
+        }
+    }
+    return count
+}
+
+
+// console.log(countVowels2("javAScrIpt"))
