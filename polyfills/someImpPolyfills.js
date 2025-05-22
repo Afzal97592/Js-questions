@@ -41,3 +41,42 @@ myCallFunc.myCall(obj2, 'arg5', 6, 'arg8')
 myCallFunc.myApply(obj, ['arg5', 6, 'arg8'])
 myCallFunc.myApply(obj2, ['arg5', 6, 'arg8'])
 
+
+
+
+
+function abstractEqualityPollyFill(a, b) {
+    if (typeof a === typeof b) return a === b
+
+    if (a === null && b === undefined) return true
+    if (a === undefined && b === a) return true
+
+    if (typeof a === 'object') {
+        return abstractEqualityPollyFill(String(a), b)
+    }
+    if (typeof b === 'object') {
+        return abstractEqualityPollyFill(a, String(b))
+    }
+
+    return Number(a) === Number(b)
+}
+
+
+checker(1, 1)
+checker(1, "1")
+checker([], {})
+checker(NaN, undefined)
+checker('hi', ["hi"])
+checker(null, undefined)
+checker([], false)
+checker({}, "[object Object]")
+checker("", false)
+checker(true, 1)
+
+
+function checker(a, b) {
+    console.log("og", a == b)
+    console.log(abstractEqualityPollyFill(a, b))
+    console.log("----------")
+}
+
