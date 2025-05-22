@@ -2,7 +2,7 @@ function capitalizeWords(sentence) {
     // Your implementation\
     let array = sentence.split(" ")
     let res = ''
-    console.log(array)
+    // console.log(array)
     for (let item of array) {
         if (item !== '') {
 
@@ -213,3 +213,49 @@ function countVowels2(str) {
 
 
 // console.log(countVowels2("javAScrIpt"))
+
+
+function flattenArray(arr) {
+    // let res = []
+
+    // for (let i = 0; i < arr.length; i++) {
+    //     let item = arr[i]
+    //     if (Array.isArray(item)) {
+    //         const flatItem = flattenArray(item);
+    //         console.log(flatItem, "flateItem")
+    //         for (let j = 0; j < flatItem.length; j++) {
+    //             res.push(flatItem[j])
+    //         }
+    //     } else {
+    //         res.push(item)
+    //     }
+    // }
+
+
+    // method-2
+
+    // for (let item of arr) {
+    //     if (typeof item === 'object') {
+    //         res = res.concat(flattenArray(item))
+    //     } else {
+    //         res = res.concat(item)
+    //     }
+    // }
+
+
+
+    // method-3
+
+
+
+    let res = arr.reduce((acc, val) => (
+        Array.isArray(val) ? acc.concat(flattenArray(val)) : acc.concat(val)
+    ), [])
+
+    return res
+}
+
+
+// Example usage
+const arr = [1, [2, [3, 4, [5, 6]], 7], 8];
+console.log(flattenArray(arr), "res"); // Output: [1, 2, 3, 4, 5, 6]

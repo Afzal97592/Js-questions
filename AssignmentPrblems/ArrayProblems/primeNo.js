@@ -1,4 +1,4 @@
-const { FaJ } = require("react-icons/fa6");
+
 
 function primeNum(arr) {
   const primeArr = arr.filter(isPrime);

@@ -65,12 +65,16 @@ function fib(n, memo = {}) {
   return res;
 }
 
-console.time("fibonacci");
-console.log(fib(43));
-console.timeLog("fibonacci");
-console.log(fib(43));
-console.timeLog("fibonacci");
-console.log(fib(43));
-console.timeLog("fibonacci");
-console.log(fib(43));
-console.timeLog("fibonacci");
+// console.time("fibonacci");
+// console.log(fib(43));
+// console.timeLog("fibonacci");
+// console.log(fib(43));
+// console.timeLog("fibonacci");
+// console.log(fib(43));
+// console.timeLog("fibonacci");
+// console.log(fib(43));
+// console.timeLog("fibonacci");
+
+
+
+
